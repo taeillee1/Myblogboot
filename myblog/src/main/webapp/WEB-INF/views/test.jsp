@@ -7,6 +7,6 @@
 </head>
 <body>
 <h1>asdasd</h1>
-<h2>나는야 낭만고양이</h2>
+<h2> 나는 낭만고양이</h2>
 </body>
 </html>
