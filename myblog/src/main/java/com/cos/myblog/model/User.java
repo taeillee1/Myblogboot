@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor //파라미터가 없는 기본생성자 생성
 @AllArgsConstructor //모든 필드 값을 파라미터로 받는 생성자를 만듦
 @Builder
+//@DynamicInsert //db insert시에 null필드는 제외시켜준다 그래서 role값에 default값이 들어갈수있게해줌
 @Entity
 public class User {
 
@@ -30,8 +32,8 @@ public class User {
     @Column(nullable = false,length = 50)
     private String email;
 
-    @ColumnDefault("'user'")
-    private String role;//Enum을 쓰는게 좋다 //권한을 주는것
+    @Enumerated(EnumType.STRING)
+    private RoleType role;//Enum을 쓰는게 좋다 //권한을 주는것
 
     @CreationTimestamp //시간이 자동으로 입력이 되게함
     private Timestamp createDate;

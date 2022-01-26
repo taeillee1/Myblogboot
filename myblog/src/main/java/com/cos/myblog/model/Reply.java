@@ -25,7 +25,7 @@ public class Reply {
 
     @ManyToOne// 여러개의 답변은 하나의 게시글에 존재가능
     @JoinColumn(name = "boardId")
-    private Board board;
+    private Board board; //BOard에서 mappedby뒤에 적는 board는 이것을 의미한다
 
     @ManyToOne// 여러개의 답변은 하나의 유저가 쓸수있다.
     @JoinColumn(name = "userId")
