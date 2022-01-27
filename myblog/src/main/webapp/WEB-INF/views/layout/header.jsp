@@ -16,11 +16,11 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar" style="float:right">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
         <c:choose>
             <c:when test="${empty sessionScope.principal}">
-                <ul class="navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
                         <a class="nav-link" href="login">로그인</a>
                     </li>
