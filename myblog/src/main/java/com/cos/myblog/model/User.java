@@ -23,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//프로젝트에 연결된 데이터베이스의 넘버링 전략을 따라간다는뜻
     private int id;
 
-    @Column(nullable = false,length = 20,unique = true)
+    @Column(nullable = false,length = 20, unique = true)
     private String username;
 
     @Column(nullable = false,length = 100)
