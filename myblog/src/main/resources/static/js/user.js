@@ -20,7 +20,6 @@ let index = {
             dataType:"json"//응답이 왔을때 응답된데이터가 생긴게 json이라면 자바스크립트로 변경시켜줌
         }).done(function (resp){ //결과가 정상이면 수행
             alert("회원가입이 완료되었습니다.")
-            alert(resp);
             location.href="/blog"
         }).fail(function (error){ //결과가 이상하면 수행
             alert(JSON.stringify(error));
