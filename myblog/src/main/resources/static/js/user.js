@@ -27,7 +27,7 @@ let index = {
         }).fail(function (error){ //결과가 이상하면 수행
             alert(JSON.stringify(error));
         });//ajax통신을 이용하여 3개의 데이터를 json으로 변경하고 insert요청
-    },
+    }
 
     // login:function (){
     //     //alert('user의 save함수 호출됨')

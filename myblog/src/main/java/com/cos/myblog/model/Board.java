@@ -28,7 +28,6 @@ public class Board {
     @Lob //large object라는 뜻
     private String content;
 
-    @ColumnDefault("0")
     private int count; //조회수
 
     @ManyToOne(fetch = FetchType.EAGER) // Many = Board , User = one 한명은 여러개의 게시글 쓸수있음 여러개의 게시글은 한명에게 쓰일수있음

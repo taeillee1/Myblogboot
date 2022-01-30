@@ -1,6 +1,7 @@
 package com.cos.myblog.config.auth;
 
 import com.cos.myblog.model.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,6 +10,7 @@ import java.util.Collection;
 
 //시큐리티가 로그인요청을 가로채서 로그인을 진행하교 완료가되면 UserDetails타입의 오브젝트를 principalDetail이란 시큐리티 고유저장
 //소에 저장을 하는 것이다.
+@Getter
 public class PrincipalDetail implements UserDetails {
     private User user;
 
