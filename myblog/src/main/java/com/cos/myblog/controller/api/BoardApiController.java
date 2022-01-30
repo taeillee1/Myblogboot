@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,6 +25,19 @@ public class BoardApiController {
     public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principal){
         boardService.write(board,principal.getUser());
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1); //Ok부분에 정상적으로 출력되면 200이 들어간다
+    }
+
+    @DeleteMapping("/api/board/{id}")
+    public ResponseDto<Integer> deleteById(@PathVariable int id){
+        boardService.deleteBoard(id);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+    }
+
+    @PutMapping("/api/board/{id}")
+    public ResponseDto<Integer> updateById(@PathVariable int id, @RequestBody Board board){
+        boardService.chageBoard(id, board);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+
     }
 
 //    @PostMapping("/api/user/login")
