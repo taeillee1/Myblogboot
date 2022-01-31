@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -34,9 +35,9 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Board> list(Pageable pageable){
+    public Page<Board> list(Pageable pageable,@RequestParam(required = false, defaultValue = "") String searchText){
 
-        return boardRepository.findAll(pageable);
+        return boardRepository.findByTitleContaining(searchText,pageable);
     }
 
     @Transactional(readOnly = true)
