@@ -20,5 +20,9 @@ public class UserController {
         return "loginpage";
     }
 
+    @GetMapping("/user/updateForm")
+    public String userUpadte(){
+        return "userUpdate";
+    }
 
 }

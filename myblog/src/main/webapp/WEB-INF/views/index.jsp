@@ -22,7 +22,9 @@
                 <li class="page-item"><a class="page-link" href="?page=${boards.pageable.pageNumber-1}">Previous</a></li>
             </c:otherwise>
         </c:choose>
-
+        <c:forEach var="i" begin="1" end="${boards.totalPages}">
+            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+        </c:forEach>
         <c:choose>
             <c:when test="${boards.last}">
                 <li class="page-item disabled"><a class="page-link" href="?page=${boards.pageable.pageNumber+1}">Next</a></li>
@@ -31,6 +33,7 @@
                 <li class="page-item"><a class="page-link" href="?page=${boards.pageable.pageNumber+1}">Next</a></li>
             </c:otherwise>
         </c:choose>
+
     </ul>
 </div>
 <%@ include file="layout/footer.jsp"%>

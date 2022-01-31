@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,11 @@ public class UserApiController {
         //여기서 DB에 insert를하고 return 하면 js에서 ajax done 부분에 들어간다
         userService.save(user);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1); //Ok부분에 정상적으로 출력되면 200이 들어간다
+    }
+    @PutMapping("/user")
+    public ResponseDto<Integer> update(@RequestBody User user){
+        userService.userUpdate(user);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
 
 //    @PostMapping("/api/user/login")
