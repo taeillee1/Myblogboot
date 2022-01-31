@@ -1,5 +1,6 @@
 package com.cos.myblog.controller;
 
+import com.cos.myblog.model.Board;
 import com.cos.myblog.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -32,6 +34,7 @@ public class BoardController {
     @GetMapping("/board/{id}")
     public String findById(@PathVariable int id,Model model){
         model.addAttribute("board",boardService.lookContent(id));
+        boardService.updateCount(id);
         return "detail";
     }
 
@@ -41,4 +44,5 @@ public class BoardController {
         return "updateForm";
 
     }
+
 }

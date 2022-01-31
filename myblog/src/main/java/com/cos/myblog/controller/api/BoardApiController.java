@@ -53,6 +53,7 @@ public class BoardApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
 
+
 //    @PostMapping("/api/user/login")
 //    public ResponseDto<Integer> login(@RequestBody User user){
 //        User principal = userService.login(user);

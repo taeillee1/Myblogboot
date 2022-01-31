@@ -11,8 +11,8 @@
     <c:forEach var="board" items="${boards.content}">
 
         <div class="card m-2">
-                <%--        <img class="card-img-top" src="img_avatar1.png" alt="Card image">--%>
             <div class="card-body">
+                조회수:<span><i>${board.count} </i></span>
                 <h4 class="card-title">${board.title}</h4>
                 <a href="/board/${board.id}" class="btn btn-primary">상세보기</a>
             </div>
@@ -44,4 +44,4 @@
     </ul>
 </div>
 <%@ include file="layout/footer.jsp"%>
-
+<script src="/js/board.js"></script>

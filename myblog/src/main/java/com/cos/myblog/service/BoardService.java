@@ -78,4 +78,9 @@ public class BoardService {
     public void replyDelete(int replyId){
         replyRepository.deleteById(replyId);
     }
+    @Transactional
+    public int updateCount(int id) {
+        return boardRepository.updateCount(id);
+    }
+
 }
