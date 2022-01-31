@@ -25,8 +25,13 @@ let index = {
             contentType:"application/json; charset = utf-8",
             dataType:"json"//응답이 왔을때 응답된데이터가 생긴게 json이라면 자바스크립트로 변경시켜줌
         }).done(function (resp){ //결과가 정상이면 수행
-            alert("회원가입이 완료되었습니다.")
-            location.href="/"
+            if(resp.status==500){
+                alert("회원가입에 실패하였습니다. 아이디가 중복됩니다.");
+            }else{
+                alert("회원가입이 완료되었습니다.");
+                location.href="/";
+            }
+
         }).fail(function (error){ //결과가 이상하면 수행
             alert(JSON.stringify(error));
         });//ajax통신을 이용하여 3개의 데이터를 json으로 변경하고 insert요청
@@ -46,8 +51,8 @@ let index = {
             contentType:"application/json; charset = utf-8",
             dataType:"json"//응답이 왔을때 응답된데이터가 생긴게 json이라면 자바스크립트로 변경시켜줌
         }).done(function (resp){ //결과가 정상이면 수행
-            alert("회원수정이 완료되었습니다.")
-            location.href="/logout"
+            alert("회원수정이 완료되었습니다.");
+            location.href="/logout";
         }).fail(function (error){ //결과가 이상하면 수행
             alert(JSON.stringify(error));
         });//ajax통신을 이용하여 3개의 데이터를 json으로 변경하고 insert요청

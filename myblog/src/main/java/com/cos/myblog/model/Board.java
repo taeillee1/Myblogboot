@@ -1,5 +1,6 @@
 package com.cos.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,8 +35,10 @@ public class Board {
     @JoinColumn(name = "userId")
     private User user; //DB는 오브젝트 저장불가, Java는 오브젝트 저장가능
 
-    @OneToMany(mappedBy = "board",fetch = FetchType.EAGER) //연관관계의 주인이 아니다 DB에 칼럼을 만들지마라 board를 select할떄 값을 얻기위해 쓰는 겁니다
-    private List<Reply> reply;
+    @OneToMany(mappedBy = "board",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) //연관관계의 주인이 아니다 DB에 칼럼을 만들지마라 board를 select할떄 값을 얻기위해 쓰는 겁니다
+    @JsonIgnoreProperties({"board"})//무한참조를 막기위해 사용하는 어노테이션 board가 reply를 호출하고 reply안의 board가 또호출되고 계속 반복되는 것을 막기 위한 어노테이션
+    @OrderBy("id desc")
+    private List<Reply> replys;
 
     @CreationTimestamp
     private Timestamp createDate;

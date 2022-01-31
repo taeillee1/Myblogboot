@@ -3,6 +3,7 @@ package com.cos.myblog.controller.api;
 import com.cos.myblog.config.auth.PrincipalDetail;
 import com.cos.myblog.dto.ResponseDto;
 import com.cos.myblog.model.Board;
+import com.cos.myblog.model.Reply;
 import com.cos.myblog.model.RoleType;
 import com.cos.myblog.model.User;
 import com.cos.myblog.service.BoardService;
@@ -38,6 +39,12 @@ public class BoardApiController {
         boardService.chageBoard(id, board);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 
+    }
+
+    @PostMapping("/api/board/{boardId}/reply") //여기서 return 된값이 js에 resp로 들어가는것
+    public ResponseDto<Integer> replySave(@PathVariable int boardId,@RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal){
+        boardService.replyWrite(principal.getUser(),boardId,reply);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1); //Ok부분에 정상적으로 출력되면 200이 들어간다
     }
 
 //    @PostMapping("/api/user/login")

@@ -26,6 +26,31 @@
         <button id="btn-delete" class="btn btn-danger mb-3">삭제</button>
     </c:if>
 
+    <div class="card mb-2">
+        <form>
+            <input type="hidden" value="${board.id}" id="boardId">
+            <div class="card-body"><textarea id="reply-content" rows="1" class="form-control"></textarea></div>
+            <div class="card-footer"><button type="button" id="btn-reply-save" class="btn btn-primary">등록</button></div>
+        </form>
+
+    </div>
+
+    <div class="card mb-2">
+        <div class="card-header">댓글 리스트</div>
+        <ul id="reply--box" class="list-group">
+            <c:forEach var="reply" items="${board.replys}">
+                <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                    <div>${reply.content}</div>
+                    <div class="d-flex">
+                        <div>작성자 : ${reply.user.username} &nbsp&nbsp</div>
+                        <button class="badge">삭제</button>
+                    </div>
+                </li>
+            </c:forEach>
+
+        </ul>
+    </div>
+
 </div>
 
 <script>

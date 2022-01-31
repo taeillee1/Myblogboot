@@ -1,9 +1,11 @@
 package com.cos.myblog.service;
 
 import com.cos.myblog.model.Board;
+import com.cos.myblog.model.Reply;
 import com.cos.myblog.model.RoleType;
 import com.cos.myblog.model.User;
 import com.cos.myblog.repository.BoardRepository;
+import com.cos.myblog.repository.ReplyRepository;
 import com.cos.myblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,9 @@ public class BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Transactional //아래의 save함수를 하나의 트렌젝션으로 취급하고 여러개중 하나라도 실패시 롤백
     public void write(Board board, User user){
@@ -53,5 +58,18 @@ public class BoardService {
         });
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
+    }
+
+    @Transactional
+    public void replyWrite(User user, int boardId, Reply requestReply){
+
+        Board board = boardRepository.findById(boardId).orElseThrow(()->{
+            return new IllegalArgumentException("댓글쓰기 실패");
+        });
+        requestReply.setUser(user);
+        requestReply.setBoard(board);
+
+        replyRepository.save(requestReply);
+
     }
 }
