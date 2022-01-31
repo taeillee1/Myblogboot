@@ -84,6 +84,19 @@ let index = {
         }).fail(function (error){ //결과가 이상하면 수행
             alert(JSON.stringify(error));
         });
+    },
+    replyDelete:function (boardId,replyId){
+        $.ajax({//회원가입 수행 요청
+            type:"DELETE",
+            url:`/api/board/${boardId}/reply/${replyId}`,
+            contentType:"application/json; charset = utf-8",
+            dataType:"json"//응답이 왔을때 응답된데이터가 생긴게 json이라면 자바스크립트로 변경시켜줌
+        }).done(function (resp){ //결과가 정상이면 수행
+            alert("댓글삭제가 완료되었습니다.");
+            location.href=`/board/${boardId}`;
+        }).fail(function (error){ //결과가 이상하면 수행
+            alert(JSON.stringify(error));
+        });
     }
 }
 

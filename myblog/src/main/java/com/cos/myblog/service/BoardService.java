@@ -73,4 +73,9 @@ public class BoardService {
         replyRepository.save(requestReply);
 
     }
+
+    @Transactional
+    public void replyDelete(int replyId){
+        replyRepository.deleteById(replyId);
+    }
 }

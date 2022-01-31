@@ -47,6 +47,12 @@ public class BoardApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1); //Ok부분에 정상적으로 출력되면 200이 들어간다
     }
 
+    @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+    public ResponseDto<Integer> replyDelete(@PathVariable int replyId){
+        boardService.replyDelete(replyId);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+    }
+
 //    @PostMapping("/api/user/login")
 //    public ResponseDto<Integer> login(@RequestBody User user){
 //        User principal = userService.login(user);
