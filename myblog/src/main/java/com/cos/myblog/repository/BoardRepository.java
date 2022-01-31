@@ -13,5 +13,5 @@ import java.util.Optional;
 //자동으로 bean등록이 된다
 //@Repository 생락가능
 public interface BoardRepository extends JpaRepository<Board, Integer> {
-    Page<Board> findByTitleContaining(String title,  Pageable pageable);
+    Page<Board> findByTitleContaining(String title, Pageable pageable);
 }
