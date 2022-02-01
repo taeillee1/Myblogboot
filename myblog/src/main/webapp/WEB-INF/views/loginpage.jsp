@@ -3,6 +3,11 @@
 
 <div class="container">
     <form action="/auth/loginProc" method="post">
+        <c:if test="${param.error}">
+            <div class="alert alert-danger" role="alert">
+                    ${param.exception}
+            </div>
+        </c:if>
         <div class="form-group">
             <label for="username">Username :</label>
             <input type="username" class="form-control" placeholder="Enter username" id="username" name="username">

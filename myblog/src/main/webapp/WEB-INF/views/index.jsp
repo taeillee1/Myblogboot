@@ -12,9 +12,15 @@
 
         <div class="card m-2">
             <div class="card-body">
-                조회수:<span><i>${board.count} </i></span>
                 <h4 class="card-title">${board.title}</h4>
-                <a href="/board/${board.id}" class="btn btn-primary">상세보기</a>
+                <div>
+                    <a href="/board/${board.id}" class="btn btn-primary justify-content-center">상세보기</a>
+
+                </div>
+                <div class="pagination justify-content-end">
+                    조회수:<span><i>${board.count} </i></span>
+                </div>
+
             </div>
         </div>
 

@@ -12,12 +12,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 //bean 등록 : 스프링 컨테이너에서 객체를 관리할 수 있게 하는 것
 @Configuration//빈등록(IOC 관리)
 @EnableWebSecurity//시큐리티 필터 추가
 @EnableGlobalMethodSecurity(prePostEnabled = true) //특정 주소로 접근을 하면 권한 및 인증을 미리 체크한다는 뜻
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private AuthenticationFailureHandler customFailurHandler;
 
     @Autowired
     private PrincipalDetailService principalDetailService;
@@ -45,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/auth/loginpage")//만약 인증이 필요하다면 로그인을 하게되고
                 .loginProcessingUrl("/auth/loginProc")//요청오는 로그인을 가로채서 대신 로그인해준다
+                .failureHandler(customFailurHandler)
                 .defaultSuccessUrl("/"); //로그인에 성공하면 가는 곳
 
     }
