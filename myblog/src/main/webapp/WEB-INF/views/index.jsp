@@ -20,7 +20,6 @@
                 <div class="pagination justify-content-end">
                     조회수:<span><i>${board.count} </i></span>
                 </div>
-
             </div>
         </div>
 
